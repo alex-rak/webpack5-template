@@ -1,0 +1,40 @@
+@import "_variables";
+
+/* 
+  Examples:
+  @include media('tablet') {}
+  @include media('desktop', 'to') {}
+  @include media(400px, 'from') {}
+*/
+
+@mixin media($screen, $direction: 'from') {
+  $screens: (
+    'desktop': var(--desktop-device),
+    'tablet': var(--tablet-device),
+    'mobile': var(--mobile-device),
+  );
+  $screen-size: $screen;
+
+  @if (type-of($screen) == string) {
+    @if map-get($screens, $screen) {
+      $screen-size: map-get($screens, $screen)
+    } @else {
+      @error 'Screen is wrong';
+    }
+  }
+
+  @if ($direction != "from" and $direction != "to") {
+    @error "Direction is wrong";
+  }
+
+  
+  @if ($direction == "from") {
+    @media (min-width: $screen-size) {
+      @content;
+    }
+  } @else {
+    @media (max-width: calc($screen-size - 1)) {
+      @content;
+    }
+  }
+}

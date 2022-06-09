@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  margin: 0 0;
+  padding: 0 0;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+body {
+  background-color: #FCFBF7;
+  font-family: 'Nunito', "Arial", sans-serif;
+  color: #000000;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+:root {
+  --max-width-content: 1440px;
+  --white: #ffffff;
+  --black: #00180e;
+  --desktop-device: 1440px;
+  --tablet-device: 980px;
+  --mobile-device: 560px;
+}
